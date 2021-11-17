@@ -71,7 +71,6 @@ public class SnakeMain extends Application {
 		mainPane.setStyle("-fx-border-color: black");
 		mainPane.setTop(vert2);
 		mainPane.setCenter(vert);
-		//mainPane.setTop(mainText);
 		BorderPane.setAlignment(mainText, Pos.CENTER);
 		BackgroundImage myBI= new BackgroundImage(new Image("res/snakeLast.jpg", 620, 620,false,true),
 		        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -82,7 +81,6 @@ public class SnakeMain extends Application {
 		
 		Scene mainScene = new Scene(mainPane, 600, 600);
 		
-		//Events for buttons
 		btStart.setOnAction(e -> {
 			skPane = new SnakePane(this.diff, this.level);
 			skPane.setStyle("-fx-border-color: black");
@@ -111,7 +109,6 @@ public class SnakeMain extends Application {
 		iv.setFitHeight(15);
 		iv.setFitWidth(15);
 		
-		//Restart button settings
 		btRestart = new Button("Return to menu");
 		btRestart.setFont(btFont);
 		btRestart.setStyle("-fx-border-color: black");
