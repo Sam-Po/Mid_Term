@@ -40,21 +40,21 @@ public class SnakePane extends Pane {
 	
 	private void init() {
 		
-		//Text Score
+		
 		Text scoreText = new Text("Score: " + snek.sqList.size());
 		scoreText.setFont(new Font("Lucida Handwriting Italic", 20));
 		scoreText.setX(5);
 		scoreText.setY(20);
 		getChildren().add(scoreText);
 		
-		//Text level
+	
 		Text levelText = new Text("Level " + this.level);
 		levelText.setFont(new Font("Lucida Handwriting Italic", 60));
 		levelText.setX(180);
 		levelText.setY(290);
 		getChildren().add(levelText);
 		
-		//Level text animation handler
+
 		EventHandler<ActionEvent> animEvent = e -> {
 			if (count > 200) {
 				if (levelText.getFont().getSize() > 20)
@@ -67,7 +67,7 @@ public class SnakePane extends Pane {
 			count++;
 		};
 		
-		//Level animation
+
 		Timeline anim = new Timeline(new KeyFrame(Duration.millis(5), animEvent));
 		anim.setCycleCount(Timeline.INDEFINITE);
 		anim.play();
@@ -82,10 +82,9 @@ public class SnakePane extends Pane {
 			getChildren().add(snek.sqList.get(i));
 		}
 		
-		//Main handler for timeline animation
+
 		EventHandler<ActionEvent> moveEvent = e -> {
 			if (!finished) {
-				//Change color after score x
 				if (snek.sqList.size() == 5) {
 					snek.reColor(Color.BLUE, Color.AQUA);
 				} else if (snek.sqList.size() == 10) {
@@ -94,7 +93,6 @@ public class SnakePane extends Pane {
 					snek.reColor(Color.FIREBRICK, Color.BLACK);
 				}
 				
-				//Condition for finishing level = 30
 				if (snek.sqList.size() == 25) {
 					finished = true;
 					Text winText = new Text("Good job!");
@@ -104,7 +102,6 @@ public class SnakePane extends Pane {
 					getChildren().addAll(SnakeMain.btNext, winText);
 				}
 				
-				//Condition for hitting obstacles
 				for (int i = 0; i < obsta.size() && !finished; i++) {
 					if (snek.sqList.get(0).getX() == this.obsta.get(i).getX() && snek.sqList.get(0).getY() == this.obsta.get(i).getY()) {
 						line.stop();
@@ -117,7 +114,6 @@ public class SnakePane extends Pane {
 					}
 				}
 				
-				//Condition for hitting self
 				for (int i = 1; i < snek.sqList.size() && !finished; i++) {
 					if (snek.sqList.get(0).getX() == snek.sqList.get(i).getX() && snek.sqList.get(0).getY() == snek.sqList.get(i).getY()) {
 						line.stop();
@@ -130,7 +126,6 @@ public class SnakePane extends Pane {
 					}
 				}
 				
-				//Condition for hitting walls
 				if (!finished && ((snek.sqList.get(0).getX() >= 580 && snek.getDir() == 1) || (snek.sqList.get(0).getX() <= 0 && snek.getDir() == 3) || (snek.sqList.get(0).getY() <= 0 && snek.getDir() == 0) || (snek.sqList.get(0).getY() >= 580 && snek.getDir() == 2))) {
 					line.stop();
 					Text text = new Text("You lost!");
@@ -141,7 +136,6 @@ public class SnakePane extends Pane {
 					finished = true;
 				}
 				
-				//Condition for having eaten food
 				if (this.food.getX() == snek.sqList.get(0).getX() && this.food.getY() == snek.sqList.get(0).getY()) {
 					resetFood();
 					snek.add();
@@ -149,7 +143,7 @@ public class SnakePane extends Pane {
 					getChildren().add(snek.sqList.get(snek.sqList.size() - 1));
 				}
 				
-				//Default move
+
 				if (!finished)
 					snek.move();
 			}
@@ -221,34 +215,33 @@ public class SnakePane extends Pane {
 			}
 		} else if (level == 5) {
 			this.obsta.clear();
-			//Make class for obstacles? Extends rectangle? easier for fill/color
-			//Create obstacle pattern //TODO Make method for this, with position and size as input?
+			
 			Rectangle[] recAr = new Rectangle[25];
 			recAr[0] = new Rectangle(300, 300, 20, 20);
 			recAr[1] = new Rectangle(320, 300, 20, 20);
 			recAr[2] = new Rectangle(340, 300, 20, 20);
-			recAr[3] = new Rectangle(360, 300, 20, 20); //show
+			recAr[3] = new Rectangle(360, 300, 20, 20); 
 			recAr[4] = new Rectangle(300, 320, 20, 20);
 			recAr[5] = new Rectangle(300, 340, 20, 20);
-			recAr[6] = new Rectangle(300, 360, 20, 20); //show
+			recAr[6] = new Rectangle(300, 360, 20, 20); 
 			recAr[7] = new Rectangle(280, 300, 20, 20);
 			recAr[8] = new Rectangle(260, 300, 20, 20);
-			recAr[9] = new Rectangle(240, 300, 20, 20); //show
+			recAr[9] = new Rectangle(240, 300, 20, 20); 
 			recAr[10] = new Rectangle(300, 280, 20, 20);
 			recAr[11] = new Rectangle(300, 260, 20, 20);
-			recAr[12] = new Rectangle(300, 240, 20, 20); //show
+			recAr[12] = new Rectangle(300, 240, 20, 20); 
 			
-			recAr[13] = new Rectangle(260, 320, 20, 20); //SHow
-			recAr[14] = new Rectangle(280, 340, 20, 20); //SHOW
+			recAr[13] = new Rectangle(260, 320, 20, 20); 
+			recAr[14] = new Rectangle(280, 340, 20, 20); 
 			recAr[15] = new Rectangle(280, 320, 20, 20);
-			recAr[16] = new Rectangle(320, 340, 20, 20); //show
-			recAr[17] = new Rectangle(340, 320, 20, 20); //show
+			recAr[16] = new Rectangle(320, 340, 20, 20); 
+			recAr[17] = new Rectangle(340, 320, 20, 20); 
 			recAr[18] = new Rectangle(320, 320, 20, 20);
-			recAr[19] = new Rectangle(340, 280, 20, 20); //show
-			recAr[20] = new Rectangle(320, 260, 20, 20); //show
+			recAr[19] = new Rectangle(340, 280, 20, 20); 
+			recAr[20] = new Rectangle(320, 260, 20, 20);
 			recAr[21] = new Rectangle(320, 280, 20, 20);
-			recAr[22] = new Rectangle(280, 260, 20, 20); //show
-			recAr[23] = new Rectangle(260, 280, 20, 20); //show
+			recAr[22] = new Rectangle(280, 260, 20, 20);
+			recAr[23] = new Rectangle(260, 280, 20, 20); 
 			recAr[24] = new Rectangle(280, 280, 20, 20);
 			
 			getChildren().addAll(recAr[3], recAr[6], recAr[9], recAr[12], recAr[13], recAr[14], recAr[16], recAr[17], recAr[19], recAr[20], recAr[22], recAr[23]);
