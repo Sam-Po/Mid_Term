@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Snake {
 
-	private int dir;	//0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT
+	private int dir;	
 	
 	private int sqPos = 400;
 	private int sqSize = 20;
@@ -29,8 +29,6 @@ public class Snake {
 		Rectangle temp = new Rectangle(20, 20);
 		temp.setFill(color);
 		temp.setStroke(stroke);
-		//temp.setX(this.sqList.get(this.sqList.size() - 1).getX());
-		//temp.setY(this.sqList.get(this.sqList.size() - 1).getY());
 		this.sqList.add(temp);
 		Rectangle temp2 = new Rectangle(20, 20);
 		Rectangle temp3 = new Rectangle(20, 20);
